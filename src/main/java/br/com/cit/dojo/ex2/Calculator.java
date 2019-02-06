@@ -4,8 +4,20 @@ public class Calculator {
 
     public static double calculate(char operation, double a, double b) {
 
-        // Do stuff here...
-
-        return 0;
+        switch (operation) {
+            case '+':
+                return a + b;
+            case '-':
+                return a - b;
+            case '*':
+                return a * b;
+            case '/':
+                if (b == 0)
+                    throw new IllegalArgumentException("Divisor não pode ser zero");
+                else
+                    return a / b;
+            default:
+                throw new UnsupportedOperationException("Operação não permitida");
+        }
     }
 }
