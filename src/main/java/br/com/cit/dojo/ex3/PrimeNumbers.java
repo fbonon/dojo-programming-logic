@@ -7,15 +7,42 @@ public class PrimeNumbers {
 
     public static List<Integer> getPrimes() {
 
-        // Do Stuff here...
+        List<Integer> primes = new ArrayList<Integer>();
+        int maxPrimeValue = 100;
 
-        return new ArrayList<Integer>();
+        for (int number = 2; number <= maxPrimeValue; number++) {
+            boolean isPrime = true;
+
+            for (int divisor = 2; divisor <= maxPrimeValue; divisor++) {
+                if ((divisor != number) && (number % divisor == 0)) {
+                    isPrime = false;
+                }
+            }
+
+            if (isPrime) {
+                primes.add(number);
+            }
+        }
+
+        return primes;
     }
 
     public static List<Integer> getPrimesWithSuffix(char suffix) {
 
-        // Do Stuff here...
+        List<Integer> primesWithSuffix = new ArrayList<Integer>();
 
-        return new ArrayList<Integer>();
+        if (Character.isDigit(suffix)) {
+            int suffixNumber = Character.getNumericValue(suffix);
+
+            for (Integer prime : getPrimes()) {
+                if (prime % 10 == suffixNumber) {
+                    primesWithSuffix.add(prime);
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("Favor informar um número");
+        }
+
+        return primesWithSuffix;
     }
 }
