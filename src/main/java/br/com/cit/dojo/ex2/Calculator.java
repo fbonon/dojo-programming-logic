@@ -4,8 +4,21 @@ public class Calculator {
 
     public static double calculate(char operation, double a, double b) {
 
-        // Do stuff here...
+        switch (operation) {
+            case '+':
+                return a + b;
+            case '-':
+                return a - b;
+            case '*':
+                return a * b;
+            case '/':
+                if (b == 0) {
+                    throw new IllegalArgumentException("Impossivel divisão por ZERO");
+                }
+                return a / b;
+            default:
+                throw new UnsupportedOperationException("Operate Invalid ");
 
-        return 0;
+        }
     }
 }
